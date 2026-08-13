@@ -20,7 +20,7 @@ flag.enc image.jpg
 
 #### 解題
 
-題目給 `image.jpg`，遇到圖片，先使用 <code>exiftool</code> 調查圖片（可參考 [[探查面向]]）：
+題目給 `image.jpg`，遇到圖片，先使用 <code>exiftool</code> 調查圖片（可參考 [探查面向](../../筆記/圖片探查面向.md)）：
 
 ```bash
 ┌──(kali㉿kali)-[~/Downloads/temp]
