@@ -19,8 +19,6 @@ Enter the password for identified hash:
 
 從題目可知是要爆破 Hash，以下提供一些解法。
 
-### 解法 1（最簡單） ：CrackStation
-
 只要需要爆破 Hash，推薦這個網站：[Crack Station](https://crackstation.net/) ，直接輸入 Hash ，就可以進行爆破了。上述的 Hash 爆破結果為：password123
 
 ![](../../assets/images/Cryptography/Easy/hashcrack1.png)
