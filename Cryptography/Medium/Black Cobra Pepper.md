@@ -161,7 +161,7 @@ d7481d89f1aaf5a857f56edd2ae8994c
 
 ## 解題
 
->[[AES]]
+>[AES](../../筆記/AES.md)
 
 本題可看到 `sub_bytes` 、`rot_word`、`sub_word` 在 `chall.py` 中的 AES，是完全沒任何作用的，整個加密系統中，只剩 `xor` 、`shiftRows`、`MixColumns`，變成「**純線性**」運算。
 
