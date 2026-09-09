@@ -90,20 +90,20 @@ b(x)=b_7x^7 + b_6x^6 + b_5x^5 + b_4x^4 + b_3x^3 + b_2x^2 + b_1x + b_0
   例如： $\{01100011\}$ 使用多項式表示 → $x^6+x^5+x+1$
 
 - **加法**
-    ```math
-    \begin{flalign*}
-    &(x^6+x^4+x^2+x+1)+(x^7+x+1)=x^7+x^6+x^4+x^2 \hfill &&(多項式)\\
-    &\{01010111\} \oplus \{10000011\}=\{11010100\}\hfill &&(binary)\\
-    &\{57\} \oplus \{83\} = \{d4\} \hfill  &&(hexadecimal)
-    \end{flalign*}
-    ```
+```math
+\begin{flalign*}
+&(x^6+x^4+x^2+x+1)+(x^7+x+1)=x^7+x^6+x^4+x^2 \hfill &&(多項式)\\
+&\{01010111\} \oplus \{10000011\}=\{11010100\}\hfill &&(binary)\\
+&\{57\} \oplus \{83\} = \{d4\} \hfill  &&(hexadecimal)
+\end{flalign*}
+```
 
 - **乘法**
   假設兩個 bytes： $b(x)、c(x)$
   則乘法 $b \cdot c$ ：
-  ```math
-  b(x)c(x)\ \ \mod m(x)
-  ```
+```math
+b(x)c(x)\ \ \mod m(x)
+```
   其中 $\color{yellow}{m(x)=x^8+x^4+x^3+x+1}$
 
 - **乘法反元素**
@@ -128,21 +128,21 @@ b^{-1}&=b^{254}
 	- $\boxed{數學表示}$
 		- $c=\{01100011\}$
 		- $\tilde{b}$ 定義如下：
-	  ```math
-	  \tilde{b}=\begin{cases}\{00\}\ \ \ , if\ \ b=\{00\}\\b^{-1}\ \ \ ,\ \ if\ \ b\ne\{00\} \end{cases}
-	  ```
+```math
+\tilde{b}=\begin{cases}\{00\}\ \ \ , if\ \ b=\{00\}\\b^{-1}\ \ \ ,\ \ if\ \ b\ne\{00\} \end{cases}
+```
 		- 假設輸入 byte 為 $b$ ，則：
-            ```math
-            \begin{aligned}
-            &b^\prime =SBOX(b)\\
-            &b^\prime _i=\tilde{b}_i\ 
-            \oplus \ \tilde{b}_{(i+4)\mod 8}\ 
-            \oplus \ \tilde{b}_{(i+5)\mod 8}\ 
-            \oplus \ \tilde{b}_{(i+6)\mod 8}\ 
-            \oplus \ \tilde{b}_{(i+7)\mod 8}\ 
-            \oplus \ c_i
-            \end{aligned}
-            ```
+```math
+\begin{aligned}
+&b^\prime =SBOX(b)\\
+&b^\prime _i=\tilde{b}_i\ 
+\oplus \ \tilde{b}_{(i+4)\mod 8}\ 
+\oplus \ \tilde{b}_{(i+5)\mod 8}\ 
+\oplus \ \tilde{b}_{(i+6)\mod 8}\ 
+\oplus \ \tilde{b}_{(i+7)\mod 8}\ 
+\oplus \ c_i
+\end{aligned}
+```
 		- 使用矩陣運算表示：
 ```math
 \begin{bmatrix}
