@@ -520,4 +520,4 @@ $$
 \boxed{\frac en\approx\frac kd}  
 $$
 
-當 $d$ 很小時，$\frac{k}{d}$ 會成為 $\frac en$ 的一個非常好的有理數近似，而 continued fraction 正好可以把這種近似找出來。這就是 Wiener attack 的核心。
+當 $d$ 很小時， $\frac{k}{d}$ 會成為 $\frac en$ 的一個非常好的有理數近似，而 continued fraction 正好可以把這種近似找出來。這就是 Wiener attack 的核心。
