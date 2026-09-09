@@ -16,7 +16,7 @@ YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclgyMHdNakV5TnpVNGZRPT0nCg==
 
 ## 解題
 
-根據附檔內容判斷，此為 base64 編碼（後面有兩個等號），故使用 [[OpenSSL]] 解碼：
+根據附檔內容判斷，此為 base64 編碼（後面有兩個等號），故使用 [OpenSSL](../../筆記/OpenSSL.md) 解碼：
 
 ```bash
 openssl base64 -d -in enc_flag -out decode_flag
