@@ -103,7 +103,11 @@ v
 ```math
 v\in L\ \ \ \  , \ \ \ v\neq 0
 ```
-使 $$\begin{Vmatrix}v\end{Vmatrix}$$ 最小
+使  
+```math
+\begin{Vmatrix}v\end{Vmatrix}
+```
+最小
 
 **LLL 不保證精確解出 SVP，但能有效找到相對短的格向量**
 
