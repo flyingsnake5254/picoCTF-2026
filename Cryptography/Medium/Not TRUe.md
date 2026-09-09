@@ -126,13 +126,13 @@ conda create -n sage conda-forge sage python=3.14
 簡要流程：
 
 **1. 建立 NTRU Basic Matrix**
-$$
+```math
 B=
 \begin{pmatrix}
 I_N, H\\
 O, qI_N
 \end{pmatrix}
-$$
+```
 其中：
 - $H$ : 為 $h$ 的循環矩陣
 - $I_N$ ：為 size = N 的單位矩陣
@@ -144,12 +144,12 @@ $$B.LLL()$$
 	$f$ 位於 LLL 結果中的前半段（後半段是 $pg$，需驗證 $f$ 的所有係數皆 >= -1 and <=1 and 不全為 0
 
 **4. 找到 f 後，進行解密**
-$$
+```math
 \begin{aligned}
 a=fc\pmod q\\
 m=f_p^{-1}a\pmod p
 \end{aligned}
-$$
+```
 	$m$ 的結果為 bit list，將其每 8 bit 一組，轉成十進位後，再轉成 ASCII 字元
 
 
