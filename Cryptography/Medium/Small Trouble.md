@@ -53,8 +53,8 @@ with open("message.txt", "w") as f:
 > [Wiener Attack](../../筆記/Wiener%20Attack.md)  
 > [Continued Fraction](../../筆記/Continued%20Fraction.md)
 
-`encryption.py` 的 $\boxed{Line\ 11}$ ，可知私鑰 $d$ 的大小只有 256 bits。通常 $d < \frac{1}{3} n^{\frac{1}{4}}$ ，可使用 [[Wiener attack]] ，本題 $d$ 為 256 bits 、$n$ 為 2096 bits，也就是：
-$$
+`encryption.py` 的 $\boxed{Line\ 11}$ ，可知私鑰 $d$ 的大小只有 256 bits。通常 $d < \frac{1}{3} n^{\frac{1}{4}}$ ，可使用 [[Wiener attack]] ，本題 $d$ 為 256 bits 、 $n$ 為 2096 bits，也就是：
+```math
 \begin{aligned}
 &\frac{1}{3} n^{\frac{1}{4}}=\frac{1}{3} 2^{2096\cdot \frac{1}{4}}= \color{yellow}{\frac{1}{3} 2^{524}}\\
 
@@ -64,7 +64,7 @@ $$
 
 &⟹ d < \frac{1}{3} n^{\frac{1}{4}}
 \end{aligned}
-$$
+```
 因 $d < \frac{1}{3} n^{\frac{1}{4}}$ 成立，可用 Wiener Attack。
 
 
@@ -84,15 +84,15 @@ $$
    → $\frac{d\cdot e - 1}{k} = \phi(n)$
   
 
-- **Step 1 :**  計算 $\frac{e}{n}$ 的 continued fraction
-  由於 $(d\cdot e-1) \mod \phi(n) = 0$ ，也就是 $d\cdot e - 1 = k \cdot \phi(n)$ 
-  推得：$d\cdot e \approx k\cdot \phi(n)$ 
+- **Step 1 :**  計算 $\frac{e}{n}$ 的 continued fraction  
+  由於 $(d\cdot e-1) \mod \phi(n) = 0$ ，也就是 $d\cdot e - 1 = k \cdot \phi(n)$   
+  推得： $d\cdot e \approx k\cdot \phi(n)$ 
   
   又因為 $\phi (n) =(p-1)(q-1)$ 以及  $n=p× q$   
-  推得：$\phi(n) \approx n$
+  推得： $\phi(n) \approx n$
   
-  故可得：$d\cdot e \approx k\cdot n$
-  整理後得到：$\frac{k}{d} \approx \frac{e}{n}$
+  故可得： $d\cdot e \approx k\cdot n$  
+  整理後得到： $\frac{k}{d} \approx \frac{e}{n}$  
   
   故利用計算 $\frac{e}{n}$ 的 [Continued Fraction](../../筆記/Continued%20Fraction.md)，找到最接近的有理數近似值，以得到可能為 $d$ 的值
 
@@ -127,7 +127,7 @@ $$
 	輸出類似：`[0, 1/3, 1/4, 11/43, ...]`
   
   
-- **Step 3 :** 驗證 $d$ 是否為真的私鑰，若是，解方程，可得到 $p$、$q$
+- **Step 3 :** 驗證 $d$ 是否為真的私鑰，若是，解方程，可得到 $p$、 $q$
 ```python
 def check_d():
     global d
@@ -335,7 +335,7 @@ convergents = list(continued_fraction_convergents(cf))
 print(convergents)
 ```
 
-輸出：`[0, 1, 3/4, 4/5, 23/29, 50/63, 123/155, 419/528, 4313/5435, 9045/11398, 40493/51027]
+輸出： `[0, 1, 3/4, 4/5, 23/29, 50/63, 123/155, 419/528, 4313/5435, 9045/11398, 40493/51027]`
 
 故本題使用以上套件，程式碼如下：
 
