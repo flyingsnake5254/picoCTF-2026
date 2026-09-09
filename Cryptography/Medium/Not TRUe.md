@@ -150,7 +150,7 @@ a=fc\pmod q\\
 m=f_p^{-1}a\pmod p
 \end{aligned}
 ```
-	$m$ 的結果為 bit list，將其每 8 bit 一組，轉成十進位後，再轉成 ASCII 字元
+$m$ 的結果為 bit list，將其每 8 bit 一組，轉成十進位後，再轉成 ASCII 字元
 
 
 ### 完整程式
