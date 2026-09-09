@@ -126,12 +126,12 @@ g(x) = x - 6
 
 ## 防禦方法
 
-1. **使用隨機填充（Random Padding）**：
-    採用 **OAEP（Optimal Asymmetric Encryption Padding）** 填充標準。每次加密時都會加入高強度的隨機位元，破壞 $m_1$ 與 $m_2$ 之間的已知線性關係，使 $f(x)$ 無法建立。
+1. **使用隨機填充（Random Padding）**：  
+　　採用 **OAEP（Optimal Asymmetric Encryption Padding）** 填充標準。每次加密時都會加入高強度的隨機位元，破壞 $m_1$ 與 $m_2$ 之間的已知線性關係，使 $f(x)$ 無法建立。
 
-2. **避免重複使用 $n$ 與小 $e$ 加密結構相似的訊息**。
+2. **避免重複使用 $n$ 與小 $e$ 加密結構相似的訊息**。  
 
-這裡的關鍵在於「因式定理（Factor Theorem）」**與**「多項式的歐幾里得演算法（Euclidean Algorithm）」的結合。
+　　這裡的關鍵在於「因式定理（Factor Theorem）」**與**「多項式的歐幾里得演算法（Euclidean Algorithm）」的結合。
 
   
 簡單來說：**如果 $x = m_1$ 是兩個多項式的共同零點（根），那麼 $(x - m_1)$ 就必然是這兩個多項式的公因式。**
@@ -189,9 +189,9 @@ sage solve.sage
 x + 11371
 ```
 
-注意係數是在 mod (11413) 下：$11371\equiv -42\pmod{11413}$
+注意係數是在 mod (11413) 下： $11371\equiv -42\pmod{11413}$
 
-所以：$h(x)=x-42$
+所以： $h(x)=x-42$
 
 因此可以取：
 
@@ -233,7 +233,7 @@ print(m1)
 知道 m1 - m2
 ```
 
-應該第一時間想到：$\boxed{\text{Franklin–Reiter Related-Message Attack}}$
+應該第一時間想到： $\boxed{\text{Franklin–Reiter Related-Message Attack}}$
 
 尤其像 $e=3,5,17$ 這類次數並不高時，多項式 GCD 非常容易計算；**(e=0x11=17) 也完全是合理的 Franklin–Reiter 題目**。
 
