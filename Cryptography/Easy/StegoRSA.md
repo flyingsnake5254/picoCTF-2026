@@ -56,7 +56,7 @@ Megapixels                      : 0.262
 
 RSA 的 Key 基本上長這樣：
 
-**private key : **
+**private key :**
 ```bash
 -----BEGIN RSA PRIVATE KEY-----
 MIICWwIBAAKBgHqxe5hJdMix+xFzG91RUO1Eqv/9J15Sa5op5MdzvJGk3/jwcWPL
@@ -75,7 +75,7 @@ euisowB+6EXPzDwdVa6sg5n6EljLoAwoH8Pw+pj4gg==
 -----END RSA PRIVATE KEY-----
 ```
 
-**public key : **
+**public key :** 
 
 ```bash
 -----BEGIN PUBLIC KEY-----
