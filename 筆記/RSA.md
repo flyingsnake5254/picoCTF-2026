@@ -120,7 +120,7 @@ RSA 建立在兩個數學難題上：
   也就是
   $3d + 40k=1$
   
-  利用$\color{yellow}擴展歐幾里得：$ 
+  利用 $\color{yellow}擴展歐幾里得：$ 
 ```math
 \begin{align}
 &40=3\times 13+1\\
