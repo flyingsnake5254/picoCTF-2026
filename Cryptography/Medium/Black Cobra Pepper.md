@@ -166,9 +166,9 @@ d7481d89f1aaf5a857f56edd2ae8994c
 本題可看到 `sub_bytes` 、`rot_word`、`sub_word` 在 `chall.py` 中的 AES，是完全沒任何作用的，整個加密系統中，只剩 `xor` 、`shiftRows`、`MixColumns`，變成「**純線性**」運算。
 
 在密碼學中，若加密系統沒有非線性運算（S-box），則輸出的密文 $C$ 與明文 $P$ 及金鑰 $K$ 之間滿足以下線性關係：
-\$
+```math
 AES(P, K) = AES(P, 0)\ \oplus \ AES(0, K)
-\$
+```
 
 本題 `chall.py` 內，已有明文 `pt1` ，以及 `output.txt` 給了明文 `AES(pt1, key)` 、`AES(flag, key)` 的結果，故可列出以下：
 
