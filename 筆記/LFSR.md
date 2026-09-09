@@ -7,31 +7,33 @@
 $\boxed{例子}$  以 4 bits 、向右位移的 LFSR 為例：
 
 目前位元：
-$$
+```math
 \begin{bmatrix}
 b_3, b_2, b_1, b_0
 \end{bmatrix}
-$$
-選擇 $b_1$ 、$b_0$ 當作 **taps** ，用來計算要補的新 bit value。
+```
+選擇 $b_1$ 、 $b_0$ 當作 **taps** ，用來計算要補的新 bit value。
 
 每次時脈觸發時：
-1. 計算 feedback bit :
-   $$f=b_0\ \oplus \ b_1 $$
-2. 所有位元向右位移一格，原本的 $b_0$ 做為這一拍的輸出
-$$
+1. 計算 feedback bit :  
+```math
+f=b_0\ \oplus \ b_1
+```
+2. 所有位元向右位移一格，原本的 $b_0$ 做為這一拍的輸出  
+```math
 \begin{aligned}
 \begin{bmatrix}
 \boxed{　}\ , b_3, b_2, b_1
 \end{bmatrix}\\\\
 output : b_0
 \end{aligned}
-$$
-3. 將 $f$ 補入做左側
-$$
+```
+3. 將 $f$ 補入做左側  
+```math
 \begin{bmatrix}
 f, b_3, b_2, b_1
 \end{bmatrix}
-$$
+```
 
 ![](../assets/images/Others/Gif/1788411441.gif)
 
