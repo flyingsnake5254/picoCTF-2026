@@ -172,7 +172,7 @@ AES(P, K) = AES(P, 0)\ \oplus \ AES(0, K)
 
 本題 `chall.py` 內，已有明文 `pt1` ，以及 `output.txt` 給了明文 `AES(pt1, key)` 、`AES(flag, key)` 的結果，故可列出以下：
 
-$$
+```math
 \begin{aligned}
 AES(pt1, key) = AES(pt1, 0) \ \oplus \ AES(0, key)\\
 ⟹\ AES(0, key) = AES(pt1, key)\ \oplus \ AES(pt1, 0)\\\\
@@ -180,7 +180,7 @@ AES(flag, key)=AES(flag, 0)\ \oplus \ AES(0, key)\\
 ⟹\ AES(flag, 0)=AES(flag, key)\ \oplus \ AES(0, key)
 
 \end{aligned}
-$$
+```
 
 得出 `AES(flag, 0)` 後，可以利用 AES 解密，解出 flag，因為 「**key 全為 0，故所有 round key 為 0**」
 
