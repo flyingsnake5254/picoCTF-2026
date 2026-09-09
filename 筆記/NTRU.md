@@ -134,13 +134,13 @@ NTRU 把私鑰藏成某個高維格中的異常短向量；LLL 可以把格基�
 
 ### NTRU 格
 
-在標準的 NTRU 基礎中，公開金鑰多項式 h 可以組成一個 2N × 2N 的分塊矩陣（Basis Matrix）：
-$$
+在標準的 NTRU 基礎中，公開金鑰多項式 h 可以組成一個 2N × 2N 的分塊矩陣（Basis Matrix）：  
+```math
 \begin{pmatrix}
 I_N, H\\
 O, qI_N
 \end{pmatrix}
-$$
+```
 其中：
 - $H$ : 為 $h$ 的循環矩陣
 - $I_N$ ：為 size = N 的單位矩陣
