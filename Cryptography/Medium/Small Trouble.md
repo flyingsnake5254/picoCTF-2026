@@ -53,7 +53,7 @@ with open("message.txt", "w") as f:
 > [Wiener Attack](../../筆記/Wiener%20Attack.md)  
 > [Continued Fraction](../../筆記/Continued%20Fraction.md)
 
-`encryption.py` 的 $\boxed{Line\ 11}$ ，可知私鑰 $d$ 的大小只有 256 bits。通常 $d < \frac{1}{3} n^{\frac{1}{4}}$ ，可使用 [[Wiener attack]] ，本題 $d$ 為 256 bits 、 $n$ 為 2096 bits，也就是：
+`encryption.py` 的 $\boxed{Line\ 11}$ ，可知私鑰 $d$ 的大小只有 256 bits。通常 $d < \frac{1}{3} n^{\frac{1}{4}}$ ，可使用 [Wiener Attack](../../筆記/Wiener%20Attack.md)   ，本題 $d$ 為 256 bits 、 $n$ 為 2096 bits，也就是：
 ```math
 \begin{aligned}
 &\frac{1}{3} n^{\frac{1}{4}}=\frac{1}{3} 2^{2096\cdot \frac{1}{4}}= \color{yellow}{\frac{1}{3} 2^{524}}\\
