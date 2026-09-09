@@ -17,19 +17,19 @@ RSA 建立在兩個數學難題上：
 ---
 ### <span style="color: #42a5f5; font-weight: bold;">金鑰產生流程</span>
 
-- **Step 1 : 選兩個大質數 $p, q$**
+- **Step 1 : 選兩個大質數 $p, q$**  
   $p, q$
 
-- **Step 2 : 計算模數 $n$**
+- **Step 2 : 計算模數 $n$**  
   $n = p\times q$
 
-- **Step 3 : 計算歐拉函數$\phi (n)$**
+- **Step 3 : 計算歐拉函數 $\phi (n)$**  
   $\phi (n)=(p-1)(q-1)$
 
 - **Step 4 : 選擇公鑰指數 $e$**
   條件：
 	- $1 < e < \phi (n)$
-	- $gcd(e, \phi (n))=1$    ......$e$ 是質數
+	- $gcd(e, \phi (n))=1$    ...... $e$ 是質數
 	常見 $e=65537$
 
 - **Step 5 : 計算私鑰 $d$**
@@ -39,8 +39,8 @@ RSA 建立在兩個數學難題上：
   
 
 <span style="color: #ff758f; font-weight: bold;">最終金鑰</span>
-- 公鑰：$(e, n)$
-- 私鑰：$(d, n)$
+- 公鑰： $(e, n)$
+- 私鑰： $(d, n)$
 
 ---
 ### <span style="color: #42a5f5; font-weight: bold;">加解密</span>
@@ -98,22 +98,22 @@ RSA 建立在兩個數學難題上：
 
 #### 金鑰產生
 
-- **Step 1 : 選兩個質數 $p, q$**
+- **Step 1 : 選兩個質數 $p, q$**  
   $p=5,\,\,\,\,\,q=11$
   
-- **Step 2 : 計算 $n$**
+- **Step 2 : 計算 $n$**  
   $n=p\times q=5\times 11=55$
   
-- Step 3 : **計算 $\phi (n)$**
+- Step 3 : **計算 $\phi (n)$**  
   $\phi (n) = (p-1)(q-1)=4\times 10=40$
 
-- **Step 4 : 選擇 $e$**
+- **Step 4 : 選擇 $e$**  
   條件：
 	- $1 < e < \phi (n) = 40$
 	- $gcd(e, \phi (n))=1$  ... $e$ 是質數
 	選擇 $e=3$
 
-- **Step 5 : 計算 $d$**
+- **Step 5 : 計算 $d$**  
   $d \cdot e \,\,\, mod \,\,\, \phi (n) = 1$
   $3d\,\,\,mod\,\,\,40=1$
   
@@ -121,7 +121,7 @@ RSA 建立在兩個數學難題上：
   $3d + 40k=1$
   
   利用$\color{yellow}擴展歐幾里得：$ 
-$$
+```math
 \begin{align}
 &40=3\times 13+1\\
 &1=40-3\times13\\\\
@@ -131,10 +131,10 @@ $$
 &d + 40=-13+40=27\\
 &\color{yellow} 最終將\,\,\,d\,\,\,定為\,\,\,27
 \end{align}
-$$
+```
 - <span style="color: #00FFFF; font-weight: bold;">最終金鑰</span>
-	- 公鑰：$(e,n)=(3,55)$
-	- 私鑰：$(d,n)=(27,55)$
+	- 公鑰： $(e,n)=(3,55)$
+	- 私鑰： $(d,n)=(27,55)$
 
 > Ref : [模數運算](../筆記/模數運算.md)
 
@@ -142,25 +142,25 @@ $$
 #### 加密
 
 假設明文 $M=7$
-$$
+```math
 \begin{align}
 C&=M^e\,\,\,mod\,\,\,n\\
 &=7^3\,\,\,mod\,\,\,55\\
 &=\color{yellow}13
 \end{align}
-$$
+```
 ---
 #### 解密
 
 密文 $C=13$
 
-$$
+```math
 \begin{align}
 M&=C^d\,\,\,mod\,\,\,n\\
 &=13^{27}\,\,\,mod\,\,\,55\\
 &=7
 \end{align}
-$$
+```
 > Ref : [模數運算](../筆記/模數運算.md)
 
 
