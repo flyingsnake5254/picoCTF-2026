@@ -28,8 +28,8 @@ $N=48,\qquad p=3,\qquad q=509$
 
 - $f$ 、$g$ 皆在多項式環 $\color{yellow}{R=\mathbb Z[x]/(x^N-1)}$ 內
   
-- $f$ 必須滿足以下條件：
-  $f$ 在模 $p$ 與模 $q$ 下，存在反元素 $f_p^{-1}$、$f_q^{-1}$
+- $f$ 必須滿足以下條件：  
+  $f$ 在模 $p$ 與模 $q$ 下，存在反元素 $f_p^{-1}$、 $f_q^{-1}$
 	- $f\cdot f_p^{-1}\equiv1\pmod p$
 	- $f\cdot f_q^{-1}\equiv1\pmod q$
 	  
@@ -51,7 +51,10 @@ $$\boxed{h=pf_q^{-1}g\pmod q}\ \ \ 或\ \ \ \boxed{h=f_q^{-1}g\pmod q} $$
   
 - 每次加密時，隨機產生一個小多項式：$r(x)$ 
   
-- 加密：$$\boxed{e=rh+m\pmod q}$$
+- 加密：
+```math
+\boxed{e=rh+m\pmod q}
+```
 
 ## 3. 解密
 
@@ -59,7 +62,7 @@ $$\boxed{h=pf_q^{-1}g\pmod q}\ \ \ 或\ \ \ \boxed{h=f_q^{-1}g\pmod q} $$
 
 ### (1) 計算 $a = fe\pmod q$
 
-$$
+```math
 \begin{aligned}
 a&=fe\pmod q\\
 &=f(rh+m)\pmod q\\
@@ -68,7 +71,7 @@ a&=fe\pmod q\\
 &=rpg+fm\pmod q
 
 \end{aligned}
-$$
+```
 
 ### (2) 計算 $f_p^{-1}a\mod p$ 
 
@@ -76,24 +79,24 @@ $$
 $$rpg\mod p = 0$$
 故：
 
-$$
+```math
 \begin{aligned}
 a \equiv fm\pmod p\\
 f_p^{-1}a \equiv f_p^{-1}fm\pmod p\\
 \boxed{f_p^{-1}a\equiv m\pmod p}
 \end{aligned}
-$$
+```
 
 
 ## Center Lift
 
 有些 NTRU 會做 Center Lift。
 
-得到：$a=prg+fm\pmod q$
+得到： $a=prg+fm\pmod q$
 
 若直接 $\mod q$ ，負數會變成很大的正數。
 
-例如：$q=509$
+例如： $q=509$
 
 則：
 - $-1\equiv508\pmod{509}$
