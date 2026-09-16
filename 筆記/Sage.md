@@ -11,6 +11,8 @@
 	- [解含參數的方程式](#解含參數的方程式)
 	- [不等式](#不等式)
 	- [方程式區間數值解](#方程式區間數值解)
+	- [長整數開根號](#長整數開根號)
+		- [開根號的結果為「整數」](#開根號的結果為整數)
 - [多項式環](#多項式環)
 	- [建立一元多項式環](#建立一元多項式環)
 	- [取得所有係數 - list()](#取得所有係數---list)
@@ -32,13 +34,33 @@
 	- [偏微分](#偏微分)
 	- [代入](#代入)
 	- [因式分解](#因式分解)
-
-
+- [模數運算](#模數運算)
+	- [計算整數餘數：%](#計算整數餘數)
+	- [建立模 $n$ 的環：Zmod(n)](#建立模-n-的環zmodn)
+	- [模反元素](#模反元素)
+	- [模除法](#模除法)
+	- [模數元素轉回整數](#模數元素轉回整數)
+	- [模次方、最大公因數、中國剩餘定理](#模次方最大公因數中國剩餘定理)
+	- [解模方程式](#解模方程式)
+- [矩陣](#矩陣)
+	- [常見底環](#常見底環)
+	- [建立矩陣](#建立矩陣)
+	- [特殊矩陣](#特殊矩陣)
+	- [矩陣大小與基本資訊](#矩陣大小與基本資訊)
+	- [取得矩陣元素](#取得矩陣元素)
+	- [轉成一維串列](#轉成一維串列)
+	- [複製矩陣](#複製矩陣)
+	- [基本矩陣運算](#基本矩陣運算)
+		- [加、減、純量乘法、矩陣乘法](#加減純量乘法矩陣乘法)
+		- [逐元素相乘](#逐元素相乘)
+		- [矩陣次方](#矩陣次方)
+		- [轉置矩陣](#轉置矩陣)
+		- [行列式、跡、秩](#行列式跡秩)
+		- [反矩陣](#反矩陣)
 
 
 <hr>
 
-以下說明，針對多項式、解方程。
 
 ## 安裝
 
@@ -283,6 +305,21 @@ root = find_root(x**5 - x - 1 == 0, 1, 2)
 print(root) # 1.1673039782615173
 ```
 
+
+
+### 長整數開根號
+
+#### 開根號的結果為「整數」
+
+底數為 20
+
+```python
+from sage.all import *
+
+N = ZZ("1048576000000000000000000000000000000000000000000000000000000")
+x = N.nth_root(20)
+print(x)
+```
 
 ## 多項式環
 
@@ -573,3 +610,311 @@ f = x**2 - y**2
 print(f.factor()) # (x - y)*(x + y)
 ```
 
+
+## 模數運算
+
+### 計算整數餘數：%
+
+```python
+a = ZZ(38)
+
+print(a % 7)    # 3
+print(-2 % 7)   # 5
+```
+
+### 建立模 $n$ 的環：Zmod(n)
+
+```python
+R = Zmod(7)
+
+a = R(10)       # 10 mod 7
+b = R(5)
+
+print(a)        # 3
+print(a + b)    # 1，因為 3 + 5 = 8 ≡ 1 mod 7
+print(a * b)    # 1，因為 3 × 5 = 15 ≡ 1 mod 7
+print(a ** 4)   # 4
+```
+
+### 模反元素
+
+在模 $n$ 下，$a^{-1}$ 滿足：
+$$a\cdot a^{-1} \equiv 1 \pmod n$$
+
+```python
+R = Zmod(7)
+a = R(3)
+
+a_inv = a ** (-1)
+
+print(a_inv)        # 5
+print(a * a_inv)    # 1
+```
+
+其他寫法：
+
+```python
+print(a.inverse_of_unit())  # 5
+print(inverse_mod(3, 7))    # 5
+```
+
+**只有與模數互質的元素才有反元素**
+
+### 模除法
+
+模除法其實是乘上反元素，例如：
+
+```python
+R = Zmod(7)
+
+a = R(3)
+b = R(5)
+
+print(a / b)        # 2
+```
+
+因為
+
+$$
+\frac{3}{5}\equiv 3\cdot 5^{-1}\equiv 3\cdot 3\equiv 2\pmod 7
+$$
+
+### 模數元素轉回整數
+
+```python
+R = Zmod(7)
+a = R(6)
+
+print(a.lift())           # 6
+print(a.lift_centered())  # -1
+```
+
+- `lift()`：通常回傳 $0,\dots,n-1$
+- `lift_centered()`：回傳接近零的代表值
+
+### 模次方、最大公因數、中國剩餘定理
+
+```python
+print(power_mod(3, 100, 7))   # 4
+
+print(gcd(30, 18))            # 6
+
+d, u, v = xgcd(30, 18)
+print(d, u, v)
+print(u * 30 + v * 18 == d)   # True
+```
+
+中國剩餘定理：
+
+```python
+x = crt(2, 3, 3, 5)
+
+print(x)       # 8
+print(x % 3)   # 2
+print(x % 5)   # 3
+```
+
+表示求：
+$$
+\begin{aligned}
+x\equiv 2\pmod 3\\
+x\equiv 3\pmod 5
+\end{aligned}
+$$
+
+### 解模方程式
+
+```python
+x = var("x")
+
+solutions = solve_mod(4*x == 2, 6)
+print(solutions)
+# [(2,), (5,)]
+```
+
+多變數：
+```python
+x, y = var("x y")
+
+solutions = solve_mod([
+    2*x + y == 1,
+    x - y == 3
+], 5)
+
+print(solutions)
+# [(3, 0)]
+```
+
+## 矩陣
+
+### 常見底環
+
+```css
+ZZ          # 整數環
+QQ          # 有理數域
+RR          # 任意精度實數
+RDF         # 雙精度實數
+CC          # 複數
+GF(7)       # 有限域 GF(7)
+Zmod(26)    # 模 26 整數環
+```
+
+例如：
+
+```python
+A = matrix(ZZ, [[1, 2], [3, 4]])
+B = matrix(QQ, [[1, 2], [3, 4]])
+C = matrix(GF(7), [[1, 2], [3, 4]])
+```
+
+查看矩陣所屬的環：
+
+```python
+print(A.base_ring())   # Integer Ring
+print(B.base_ring())   # Rational Field
+```
+
+### 建立矩陣
+
+```python
+A = matrix(ZZ, [
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(A)
+```
+
+輸出：
+```python
+[1 2 3]
+[4 5 6]
+```
+
+### 特殊矩陣
+
+```python
+Z = zero_matrix(ZZ, 2, 3)       # 2×3 零矩陣
+I = identity_matrix(ZZ, 3)      # 3×3 單位矩陣
+D = diagonal_matrix([2, 3, 5])  # 對角矩陣
+R = random_matrix(ZZ, 3, 3)     # 隨機整數矩陣
+```
+
+### 矩陣大小與基本資訊
+
+```python
+A = matrix(ZZ, [
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(A.nrows())       # 2
+print(A.ncols())       # 3
+print(A.dimensions())  # (2, 3)
+print(A.is_square())   # False
+print(A.base_ring())   # Integer Ring
+print(A.parent())
+```
+
+### 取得矩陣元素
+
+`A[列索引, 行索引]`
+
+```python
+print(A[0, 0])   # 1
+print(A[0, 2])   # 3
+print(A[1, 1])   # 5
+```
+
+
+取得整列或整行：
+```python
+print(A.row(0))      # (1, 2, 3)
+print(A.column(1))   # (2, 5)
+```
+
+取得多列、多行：
+```python
+print(A.rows())
+print(A.columns())
+```
+
+
+### 轉成一維串列
+
+```python
+print(A.list())
+# [1, 2, 3, 4, 5, 6]
+```
+
+### 複製矩陣
+
+```python
+B = copy(A)
+B[0, 0] = 999
+```
+
+### 基本矩陣運算
+
+#### 加、減、純量乘法、矩陣乘法
+```python
+A + B
+A - B
+3 * A
+-A
+A * B
+```
+
+#### 逐元素相乘
+
+```python
+A.elementwise_product(B)
+```
+
+#### 矩陣次方
+
+```python
+A ** 2
+A ** 5
+```
+
+#### 轉置矩陣
+
+```python
+A.transpose()
+A.T
+```
+
+#### 行列式、跡、秩
+
+```python
+A.det()
+A.determinant()
+
+A.trace()
+A.rank()
+```
+
+#### 反矩陣
+
+為了保證能出現分數，通常先轉成 `QQ`：
+
+```python
+A_QQ = A.change_ring(QQ)
+
+A_inv = A_QQ.inverse()
+
+print(A_inv)
+print(A_QQ * A_inv)
+```
+
+也可寫成：
+```python
+A_inv = ~A_QQ
+A_inv = A_QQ ** (-1)
+```
+
+判斷是否為奇異矩陣：
+```python
+A.is_singular()
+```
