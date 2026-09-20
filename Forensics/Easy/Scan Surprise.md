@@ -11,7 +11,7 @@ You can download the challenge files here:
 
 ## 解題
 
->[[探查面向]]
+>[探查面向](../../筆記/圖片探查面向.md)
 
 先將 `challenge.zip` 解壓縮後，`challenge` 資料夾內容如下：
 
